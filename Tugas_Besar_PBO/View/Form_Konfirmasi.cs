@@ -1,8 +1,11 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -134,7 +137,111 @@ namespace Tugas_Besar_PBO.View
                 Tampiljoki();
             }
         }
+        private void ExportToExcel(DataGridView dataGridView, string searchData)
+        {
+            using (ExcelPackage excelPackage = new ExcelPackage())
+            {
+                ExcelWorksheet worksheet =
+               excelPackage.Workbook.Worksheets.Add("Sheet1");
+                // Export Headers
+                for (int j = 1; j <= dataGridView.ColumnCount; j++)
+                {
+                    if (dataGridView.Columns[j - 1].HeaderText != null)
+                    {
+                        worksheet.Cells[1, j].Value = dataGridView.Columns[j -
+                       1].HeaderText;
+                    }
+                }
+                // Export Data
+                for (int i = 0; i < dataGridView.RowCount; i++)
+                {
+                    for (int j = 0; j < dataGridView.Rows[i].Cells.Count; j++)
+                    {
+                        string cellValue = (dataGridView.Rows[i].Cells[j].Value !=
+                       null ? dataGridView.Rows[i].Cells[j].Value.ToString() : "");
+                        worksheet.Cells[i + 2, j + 1].Value = cellValue;
+                    }
+                }
+                FileInfo excelFile = new FileInfo(searchData);
+                excelPackage.SaveAs(excelFile);
+            }
+        }
 
-       
+    
+
+
+        private void cetak_Click(object sender, EventArgs e)
+        {
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Excel Documents (*.xlsx)|*.xlsx";
+            save.FileName = "Report Data Diamond.xlsx";
+
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                string directory = Path.GetDirectoryName(save.FileName);
+                string fileNameWithoutExt =
+               Path.GetFileNameWithoutExtension(save.FileName);
+                string extension = Path.GetExtension(save.FileName);
+                int count = 1;
+                string filePath = save.FileName;
+                while (File.Exists(filePath))
+                {
+                    filePath = Path.Combine(directory, $"{fileNameWithoutExt}({count}){extension}"); count++;
+
+                }
+                ExportToExcel(datatrandi, filePath);
+            }
+        }
+
+        private void cetakjoki_Click(object sender, EventArgs e)
+        {
+
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Excel Documents (*.xlsx)|*.xlsx";
+            save.FileName = "Report Data Joki.xlsx";
+
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                string directory = Path.GetDirectoryName(save.FileName);
+                string fileNameWithoutExt =
+               Path.GetFileNameWithoutExtension(save.FileName);
+                string extension = Path.GetExtension(save.FileName);
+                int count = 1;
+                string filePath = save.FileName;
+                while (File.Exists(filePath))
+                {
+                    filePath = Path.Combine(directory, $"{fileNameWithoutExt}({count}){extension}"); count++;
+
+                }
+                ExportToExcel(datatranjok, filePath);
+            }
+        }
+
+        private void tbcaridiamond_TextChanged(object sender, EventArgs e)
+        {
+            string query = "SELECT id_diamonds, id_username, id_server, jumlah_diamond, bonus_diamond, harga, email, metode_pembayaran, status FROM t_diamond " +
+                        "WHERE id_diamonds LIKE '%" + tbcaridiamond.Text + "%' OR id_username LIKE '%" + tbcaridiamond.Text + "%' OR " +
+                        "id_server LIKE '%" + tbcaridiamond.Text + "%' OR jumlah_diamond LIKE '%" + tbcaridiamond.Text + "%' OR " +
+                        "bonus_diamond LIKE '%" + tbcaridiamond.Text + "%' OR harga LIKE '%" + tbcaridiamond.Text + "%' OR " +
+                        "email LIKE '%" + tbcaridiamond.Text + "%' OR metode_pembayaran LIKE '%" + tbcaridiamond.Text + "%' OR " +
+                        "status LIKE '%" + tbcaridiamond.Text + "%'";
+
+            datatrandi.DataSource = koneksi.ShowData(query);
+        }
+
+        private void tbcarijoki_TextChanged(object sender, EventArgs e)
+        {
+            string query = "SELECT id_jasa, jenis_jasa, rank, jumlah_bintang, harga, total_harga, penjoki, metode_pembayaran, no_whatsapp, email, password, jenis_akun, status FROM t_jasa_joki " +
+                           "WHERE id_jasa LIKE '%" + tbcarijoki.Text + "%' OR jenis_jasa LIKE '%" + tbcarijoki.Text + "%' OR " +
+                           "rank LIKE '%" + tbcarijoki.Text + "%' OR jumlah_bintang LIKE '%" + tbcarijoki.Text + "%' OR " +
+                           "harga LIKE '%" + tbcarijoki.Text + "%' OR total_harga LIKE '%" + tbcarijoki.Text + "%' OR " +
+                           "penjoki LIKE '%" + tbcarijoki.Text + "%' OR metode_pembayaran LIKE '%" + tbcarijoki.Text + "%' OR " +
+                           "no_whatsapp LIKE '%" + tbcarijoki.Text + "%' OR email LIKE '%" + tbcarijoki.Text + "%' OR " +
+                           "password LIKE '%" + tbcarijoki.Text + "%' OR jenis_akun LIKE '%" + tbcarijoki.Text + "%' OR " +
+                           "status LIKE '%" + tbcarijoki.Text + "%'";
+
+            datatranjok.DataSource = koneksi.ShowData(query);
+        }
     }
 }

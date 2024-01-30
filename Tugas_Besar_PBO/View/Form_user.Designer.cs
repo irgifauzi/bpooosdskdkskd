@@ -37,7 +37,6 @@
             this.gameStoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diamondToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jasaJokiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.diamondDanJasaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataTransaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -45,6 +44,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
             this.gameStoreToolStripMenuItem,
@@ -52,7 +53,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(905, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(905, 38);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -63,27 +64,27 @@
             this.exitToolStripMenuItem,
             this.backToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(82, 32);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
             // aboutUsToolStripMenuItem
             // 
             this.aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.aboutUsToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.aboutUsToolStripMenuItem.Text = "About Us";
             this.aboutUsToolStripMenuItem.Click += new System.EventHandler(this.aboutUsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // backToolStripMenuItem
             // 
             this.backToolStripMenuItem.Name = "backToolStripMenuItem";
-            this.backToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.backToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.backToolStripMenuItem.Text = "Back";
             this.backToolStripMenuItem.Click += new System.EventHandler(this.backToolStripMenuItem_Click);
             // 
@@ -91,43 +92,35 @@
             // 
             this.gameStoreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.diamondToolStripMenuItem,
-            this.jasaJokiToolStripMenuItem,
-            this.diamondDanJasaToolStripMenuItem});
+            this.jasaJokiToolStripMenuItem});
             this.gameStoreToolStripMenuItem.Name = "gameStoreToolStripMenuItem";
-            this.gameStoreToolStripMenuItem.Size = new System.Drawing.Size(91, 21);
+            this.gameStoreToolStripMenuItem.Size = new System.Drawing.Size(138, 32);
             this.gameStoreToolStripMenuItem.Text = "Game Store";
             // 
             // diamondToolStripMenuItem
             // 
             this.diamondToolStripMenuItem.Name = "diamondToolStripMenuItem";
-            this.diamondToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.diamondToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.diamondToolStripMenuItem.Text = "Diamond";
             this.diamondToolStripMenuItem.Click += new System.EventHandler(this.diamondToolStripMenuItem_Click);
             // 
             // jasaJokiToolStripMenuItem
             // 
             this.jasaJokiToolStripMenuItem.Name = "jasaJokiToolStripMenuItem";
-            this.jasaJokiToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.jasaJokiToolStripMenuItem.Size = new System.Drawing.Size(270, 36);
             this.jasaJokiToolStripMenuItem.Text = "Jasa Joki";
             this.jasaJokiToolStripMenuItem.Click += new System.EventHandler(this.jasaJokiToolStripMenuItem_Click);
-            // 
-            // diamondDanJasaToolStripMenuItem
-            // 
-            this.diamondDanJasaToolStripMenuItem.Name = "diamondDanJasaToolStripMenuItem";
-            this.diamondDanJasaToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.diamondDanJasaToolStripMenuItem.Text = "Diamond dan Jasa";
-            this.diamondDanJasaToolStripMenuItem.Click += new System.EventHandler(this.diamondDanJasaToolStripMenuItem_Click);
             // 
             // dataTransaksiToolStripMenuItem
             // 
             this.dataTransaksiToolStripMenuItem.Name = "dataTransaksiToolStripMenuItem";
-            this.dataTransaksiToolStripMenuItem.Size = new System.Drawing.Size(110, 21);
+            this.dataTransaksiToolStripMenuItem.Size = new System.Drawing.Size(166, 32);
             this.dataTransaksiToolStripMenuItem.Text = "Data Transaksi";
             this.dataTransaksiToolStripMenuItem.Click += new System.EventHandler(this.dataTransaksiToolStripMenuItem_Click);
             // 
             // Form_user
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(905, 551);
@@ -159,6 +152,5 @@
         private System.Windows.Forms.ToolStripMenuItem dataTransaksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem diamondToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem jasaJokiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem diamondDanJasaToolStripMenuItem;
     }
 }
